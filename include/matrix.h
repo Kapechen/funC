@@ -1,19 +1,28 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 #include <vector>
+#include <iostream>
 using namespace std;
 //矩阵类的简单实现
 template <typename Object>
 class matrix
 {
 public:
-	//构造函数将array构造成具有rows个元素，每个元素都是vector<Object>类型对象，而这些对象均是由零参数构造函数构造而得的向量
-	matrix(int rows, int cols) :array(rows)
+	//构造函数首先将array构造成具有rows个元素，每个元素都是vector<Object>类型对象，而这些对象均是由零参数构造函数构造而得的向量
+	matrix(int rows, int cols) :array{ rows }
 	{
 		//每行的大小被调整为有cols个列位置
-		for (auto& thisRow : array)
+		for (auto& thisRow : array) {
 			thisRow.resize(cols);
+		}
+			
 	}
+	matrix() :array{ 0 } {
+		for (auto& thisRow : array) {
+			thisRow.resize(0);
+		}
+	}
+	~matrix(){}
 	matrix(vector<vector<Object>> v):array{v}{}
 	matrix(vector<vector<Object>> && v):array{std::move(v)}{}
 	//m[i]返回对应矩阵第i行的向量 m[i][j]返回向量m[i]中位置j上的元素-------矩阵的operator[]返回一个vector<Object>类型的实体
@@ -33,6 +42,22 @@ public:
 	{
 		return numrows() ? array[0].size() : 0;
 	}
+	void print() {
+		int rows = this->numrows();
+		int cols = this->numcols();
+		for (int i = 0; i < rows; i++)
+		{
+			for (int j = 0; j < cols; j++)
+			{
+				cout << array[i][j] << " ";
+			}
+			cout << "\n";
+		}
+	}
+	////将array[i]调整为cols列
+	/*void resize(int cols) {
+		cout << cols;
+	}*/
 private:
 	vector<vector<Object>> array;//矩阵通过array型数据成员来表示，该数据成员被声明为vector<Object>的一个vector类的对象
 };
