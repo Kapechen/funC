@@ -61,4 +61,12 @@ public:
 private:
 	vector<vector<Object>> array;//矩阵通过array型数据成员来表示，该数据成员被声明为vector<Object>的一个vector类的对象
 };
+//测试代码
+//matrix<int> m1(3, 3);
+//for (int i = 0; i < 3; i++) {
+//	for (int j = 0; j < 3; j++) {
+//		m1[i][j] = i;
+//	}
+//}
+//m1.print();
 #endif // !MATRIX_H
