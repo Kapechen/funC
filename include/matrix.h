@@ -3,14 +3,19 @@
 #include <vector>
 #include <iostream>
 using namespace std;
-//矩阵类的简单实现
+//泛型矩阵类的简单实现
 template <typename Object>
 class matrix
 {
 public:
 	//构造函数首先将array构造成具有rows个元素，每个元素都是vector<Object>类型对象，而这些对象均是由零参数构造函数构造而得的向量
-	matrix(int rows, int cols) :array{ rows }
+	matrix(int rows, int cols)
 	{
+		if (rows < 0 || cols < 0) {
+			cout << "Parameters passed in are invalid!" << endl;
+			return;
+		}
+		array.resize(rows);
 		//每行的大小被调整为有cols个列位置
 		for (auto& thisRow : array) {
 			thisRow.resize(cols);
@@ -54,14 +59,25 @@ public:
 			cout << "\n";
 		}
 	}
-	////将array[i]调整为cols列
-	/*void resize(int cols) {
-		cout << cols;
-	}*/
+	//resize函数用于重新调整matrix的大小
+	void resize(int rows, int cols) {
+		if (rows < 0 || cols < 0) {
+			cout << "Parameters passed in are invalid!" << endl;
+			return;
+		}
+		array.resize(rows);
+		for (auto& thisRow : array) {
+			thisRow.resize(cols);
+		}
+	}
 private:
 	vector<vector<Object>> array;//矩阵通过array型数据成员来表示，该数据成员被声明为vector<Object>的一个vector类的对象
 };
 //测试代码
+//matrix<double> m1(-1, 4);
+//matrix<double> m1(3,3);
+//m1.resize(5, 4);
+//m1.print();
 //matrix<int> m1(3, 3);
 //for (int i = 0; i < 3; i++) {
 //	for (int j = 0; j < 3; j++) {
