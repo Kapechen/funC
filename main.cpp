@@ -22,3 +22,16 @@ int main()
 
 return 0;
 }
+
+//关于迭代器的一些新东西
+template <typename Container>
+auto begin(Container& c)->decltype(c.begin())
+{
+	return c.begin();
+}
+
+template <typename Container>
+auto end(Container& c)->decltype(c.end())
+{
+	return c.end();
+}
