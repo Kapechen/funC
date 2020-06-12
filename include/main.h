@@ -11,5 +11,6 @@
 //#include "student.h"
 //#include "stacktp.h"
 //#include "tv.h"
+#include "josephus.h"
 #endif // !__main__
 

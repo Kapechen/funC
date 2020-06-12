@@ -231,6 +231,27 @@ public:
 			itr = erase(itr);
 		return to;
 	}
+	/// <summary>
+	/// 迭代器find函数
+	/// 编辑于 2020/6/7
+	/// </summary>
+	/// <param name="start">查找的起点</param>
+	/// <param name="end">查找的终点</param>
+	/// <param name="x">查找的值</param>
+	/// <returns>返回一个iterator，包含从start扩展到(但不包括)end的范围内第1次出现的x，若无x，则返回end</returns>
+	iterator find(iterator start, iterator end,const Object& x)
+	{
+		start.assertIsValid();
+		end.assertIsValid();
+		iterator itr = start;
+		for (; itr != end; itr++) {
+			if (itr.current->data == x)
+			{
+				return itr;
+			}
+		}
+		return end;
+	}
 	/*List类常用函数*/
 	int size()const
 	{

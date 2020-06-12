@@ -13,7 +13,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 
 #find_package(SDL2 CONFIG REQUIRED)
 # 将源代码添加到此项目的可执行文件。
-add_executable(${PROJECT_NAME} "main.cpp" "src/coordin.cpp" "src/stock2.cpp" "src/stack.cpp" "src/mytime1.cpp" "src/vect.cpp" "src/stringbad.cpp" "src/string1.cpp" "src/queue.cpp" "src/student.cpp"   "src/tv.cpp")
+add_executable(${PROJECT_NAME} "main.cpp" "src/coordin.cpp" "src/stock2.cpp" "src/stack.cpp" "src/mytime1.cpp" "src/vect.cpp" "src/stringbad.cpp" "src/string1.cpp" "src/queue.cpp" "src/student.cpp"   "src/tv.cpp" "include/josephus.h" "src/josephus.cpp")
 
 # TODO: 如有需要，请添加测试并安装目标。
 #target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2 SDL2::SDL2main)
